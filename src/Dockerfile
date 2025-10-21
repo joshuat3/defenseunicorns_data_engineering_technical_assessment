@@ -6,7 +6,7 @@ RUN pip3 install --no-cache --upgrade --break-system-packages pip setuptools
 RUN mkdir /app
 RUN mkdir /data
 RUN mkdir /postgres
-COPY ./postgres/schema.sql /postgres
+COPY ./postgres/* /postgres
 COPY ./data/* /data
 COPY ./src/* /app
 WORKDIR /app

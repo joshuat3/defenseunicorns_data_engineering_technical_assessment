@@ -35,7 +35,7 @@ submit: ## Gets a pg_dump of the orders database and saves to submission/pg_dump
 
 .PHONY: ingest
 ingest: ## WARNING This will recycle the postgres deployment.  Runs a full ingestion test with docker compose
-	$(MAKE) _test-postgres-down _test-build-solution_test-compose-solution
+	$(MAKE) _test-postgres-down _test-build-solution _test-compose-solution
 	$(MAKE) _test-check-submission-dir _test-compose-logs _test-compose-down
 
 .PHONY: run-tests
@@ -65,7 +65,7 @@ _test-postgres-up: #_# Brings up a postgres container with the correct database 
 _test-postgres-down: #_# Brings down the postgres container
 	if [ "$(shell docker ps -q -f name=postgres)" ]; then \
 		docker stop "$(shell docker ps -q -f name=postgres)"; \
-		docker remove "$(shell docker ps -q -f name=postgres)"; \
+		docker rm "$(shell docker ps -q -f name=postgres)"; \
 	fi
 
 .PHONY: _test-check-submission-dir

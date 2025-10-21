@@ -1,0 +1,1 @@
+truncate table orders, users, parts, components
